@@ -34,7 +34,7 @@ const Login = () => {
         }
         catch(error){ 
             console.log(error);
-            formStatus.current.textContent = error;               
+            formStatus.current.textContent = error.response.data.msg;               
         }
     }
     else{   
