@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useRef} from 'react'
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({setLogged}) => {
 
   const formStatus = useRef();
     
@@ -31,6 +31,7 @@ const Login = () => {
             const req = await axios.post('/auth/login',{email:controll.email,password:controll.password});
             localStorage.setItem('token',req.data.token);
             formStatus.current.textContent="Successfully logged in!";
+            setLogged(true);
         }
         catch(error){ 
             console.log(error);
