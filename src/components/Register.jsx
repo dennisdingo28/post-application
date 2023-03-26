@@ -34,7 +34,7 @@ const Register = () => {
     if(!checkEmpty(controll.username) && isEmail(controll.email) && !checkEmpty(controll.password)){
         try{
             formStatus.current.textContent = "Loading..."
-            const req = await axios.post('/auth/register',{name:controll.username,email:controll.email,password:controll.password,agreeTerms:controll.agreeTerms});
+            const req = await axios.post('https://post-application-server-production.up.railway.app/auth/register',{name:controll.username,email:controll.email,password:controll.password,agreeTerms:controll.agreeTerms});
             formStatus.current.textContent="Account was successfully created";
         }
         catch(error){

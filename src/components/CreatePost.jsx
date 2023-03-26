@@ -15,7 +15,7 @@ const CreatePost = ({user,token}) => {
         setFormStatus("Loading...")
 
         if(validateInput()){
-            const req = await axios.post('/posts',{name:user.name,description:desc},{
+            const req = await axios.post('https://post-application-server-production.up.railway.app/posts',{name:user.name,description:desc},{
                 headers:{
                     Authorization:`Bearer ${token}`
                 }

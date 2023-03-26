@@ -28,7 +28,7 @@ const Login = ({setLogged}) => {
     if(isEmail(controll.email) && !checkEmpty(controll.password)){
         try{
             formStatus.current.textContent = "Loading..."
-            const req = await axios.post('/auth/login',{email:controll.email,password:controll.password});
+            const req = await axios.post('https://post-application-server-production.up.railway.app/auth/login',{email:controll.email,password:controll.password});
             localStorage.setItem('token',req.data.token);
             formStatus.current.textContent="Successfully logged in!";
             setLogged(true);

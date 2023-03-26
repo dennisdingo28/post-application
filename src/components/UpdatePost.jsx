@@ -12,14 +12,14 @@ const UpdatePost = () => {
     decodePost(postId);
 
     async function decodePost(id){
-        const req = await axios.post('/decodePost',{id});
+        const req = await axios.post('https://post-application-server-production.up.railway.app/decodePost',{id});
         setOldPost(req.data.description);
     }
     
     async function updatePost(){
         setStatus('Loading...')
         const token = localStorage.getItem('token');
-      const req = await axios.patch(`/posts/${postId}`,{description:newInput.current.value},{
+      const req = await axios.patch(`https://post-application-server-production.up.railway.app/posts/${postId}`,{description:newInput.current.value},{
         headers:{
             Authorization:`Bearer ${token}`
         }

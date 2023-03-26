@@ -8,14 +8,14 @@ const Home = ({user,logged,setLogged}) => {
   const [allPosts,setPosts]=useState([{}]);
   console.log(allPosts);
   async function getPosts(){
-    const req = await axios.get('/posts');
+    const req = await axios.get('https://post-application-server-production.up.railway.app/posts');
     setPosts(req.data.posts);
   }
 
   async function deletePost(postId){
     const token = localStorage.getItem('token')
 
-    const req = await axios.delete(`/posts/${postId}`,{
+    const req = await axios.delete(`https://post-application-server-production.up.railway.app/posts/${postId}`,{
       headers:{
         Authorization:`Bearer ${token}`
       }

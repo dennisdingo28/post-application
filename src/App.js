@@ -17,7 +17,7 @@ function App() {
   const [user,setUser]=useState({});
 
   async function decodeUser(token){
-    const req = await axios.post('/decode',{},{headers:{
+    const req = await axios.post('https://post-application-server-production.up.railway.app/decode',{},{headers:{
       Authorization:`Bearer ${token}`
     }});
     setUser(req.data);
