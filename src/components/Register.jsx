@@ -35,8 +35,7 @@ const Register = () => {
         try{
             formStatus.current.textContent = "Loading..."
             const req = await axios.post('/auth/register',{name:controll.username,email:controll.email,password:controll.password,agreeTerms:controll.agreeTerms});
-            localStorage.setItem('token',JSON.stringify(req.data.token))
-             formStatus.current.textContent="Account was successfully created";
+            formStatus.current.textContent="Account was successfully created";
         }
         catch(error){
             console.log(error);

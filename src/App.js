@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import {useState,useEffect} from "react";
 import CreatePost from './components/CreatePost';
+import UpdatePost from './components/UpdatePost';
 import axios from "axios";
 
 function App() {
@@ -13,12 +14,13 @@ function App() {
 
   const [token,setToken]=useState(function(){return localStorage.getItem('token') || ""})
 
-  const [user,setUser]=useState("");
+  const [user,setUser]=useState({});
+
   async function decodeUser(token){
     const req = await axios.post('/decode',{},{headers:{
       Authorization:`Bearer ${token}`
     }});
-    setUser(req.data.name);
+    setUser(req.data);
   }
 
   useEffect(()=>{
@@ -36,6 +38,7 @@ function App() {
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login setLogged={setLogged}/>}/>
           <Route path='/createPost' element={<CreatePost user={user} token={token}/>}/>
+          <Route path='/updatePost/:postId' element={<UpdatePost/>}/>
         </Routes>
       </div>
     </Router>

@@ -15,7 +15,7 @@ const CreatePost = ({user,token}) => {
         setFormStatus("Loading...")
 
         if(validateInput()){
-            const req = await axios.post('/posts',{name:user,description:desc},{
+            const req = await axios.post('/posts',{name:user.name,description:desc},{
                 headers:{
                     Authorization:`Bearer ${token}`
                 }
@@ -35,16 +35,16 @@ const CreatePost = ({user,token}) => {
   return (
 
     <div className='min-h-[100vh] flex items-center justify-center'>
-        <div className='bg-[#1e1e1e] p-2 text-white w-[100%] max-w-[400px] rounded-t-sm flex flex-col gap-5'>
-            <h2 className='font-bold text-center text-[1.1em] sm:text-[1.2em]'>Username: {user}</h2>
+        <form  className='bg-[#1e1e1e] p-2 text-white w-[100%] max-w-[400px] rounded-t-sm flex flex-col gap-5'>
+            <h2 className='font-bold text-center text-[1.1em] sm:text-[1.2em]'>Username: {user.name}</h2>
             <div>
                 <textarea value={desc} onChange={(e)=>setDesc(e.target.value)} placeholder='description' className='bg-transparent border-l border-r resize-none outline-none w-[100%] px-1' rows={5}>  
 
                 </textarea>
             </div>  
-            <button onClick={createPost} className='bg-white text-black px-2 py-1 duration-[.20s] rounded-md hover:shadow-[0px_0px_5px_white] active:scale-[.90]'>Create Post</button>
+            <button type='submit' onClick={createPost} className='bg-white text-black px-2 py-1 duration-[.20s] rounded-md hover:shadow-[0px_0px_5px_white] active:scale-[.90]'>Create Post</button>
             <p className='text-center formStatus font-thin'>{formStatus}</p>
-        </div>
+        </form>
     </div>
 
     )
